@@ -1,0 +1,44 @@
+---
+title=<h3>""</h3>
+---
+
+
+
+
+:::: {style="display: flex;"}
+
+::: {style="width:30%;margin-top:90px;"}
+
+![](pics/portraitcropped.jpg){width=400px}
+:::
+
+::: {width:"10%";}
+
+:::
+
+::: {style="width:40%; margin-left:50px;"}
+## Welcome!
+
+<br>
+I am a PhD candidate in political science at New York University.
+
+<br>
+My research interests center on gender and political participation, with a regional focus on India. My dissertation investigates under which conditions women turn out at equal rates to men, and seeks to explain regional and temporal variation in the closing of the gender turnout gap. 
+
+<br>
+I employ a variety of methodological approaches in my research, including surveys, experiments, statistical analysis of large datasets, and qualitative interviews. My dissertation combines qualitative fieldwork with original surveys, experiments and new administrative data to understand which factors affect women's turnout rates relative to men's.
+
+<br>
+You can contact me at franziska 'at' nyu 'dot' edu. My CV is available 
+```{r,echo=F,message=F,warning=F}
+xfun::pkg_load2(c("htmltools", "mime"))
+xfun::embed_file('downloads/Academic CV.pdf', text ="here.")
+```
+:::
+
+::::    
+
+
+
+
+

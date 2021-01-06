@@ -1,0 +1,193 @@
+---
+title: <h2>Research</h2>
+---
+
+
+
+![](pics/women2.jpg){}
+
+<br>
+
+
+### Work in Progress
+
+<br>
+
+#### **The Gender Turnout Gap Revisited: When Do Women Participate (Un)Equally in the Electoral Process?**
+
+When do women turnout at equal rates to men? Political scientists have paid little attention to this question since the gender turnout gap -- the difference between male and female turnout rates -- closed in the US in the 1980s. However, the question is far from answered. Using a new time-series dataset on India, where the gender turnout gap recently closed, I show that traditional theories of female electoral participation hold little explanatory power: relatively higher female turnout rates are not correlated with (1) higher levels of development; (2) higher female labor force participation rates; or (3) female representation. Instead, I propose a theory of social norms, where conservative social gender norms act as additional, gender-specific costs of voting that depress women's turnout but not men's. When social gender norms become more compatible with women's electoral participation, female turnout will catch up with -- and sometimes exceed -- male turnout. Importantly, this norm change need not be dependent on economic factors, such as growth or female labor force participation. Instead, I show that under certain conditions, women's political participation can precede their economic participation.</p>
+</details>
+
+
+<details>
+<summary>Graphics</summary>
+<p>
+```{r India, echo=F,message=F, warning=F}
+library(raster)
+library(ggplot2)
+library(tidyverse)
+library(plotly)
+
+LSdata <- read.csv("C:/Users/franz/Dropbox/PhD/Dissertation/Turnout Data/0 - Lok Sabha/TCPD_LokSabha_VoterTurnout_2019-09-10.csv")
+LSdata$gg <- LSdata$m_turnout-LSdata$f_turnout
+LSdata$f_turnout <- round(LSdata$f_turnout,digits=2)
+LSdata$m_turnout <- round(LSdata$m_turnout,digits=2)
+
+LokSabha <- ggplot(LSdata, aes(x=year)) +
+  ggtitle("Turnout For Indian National Elections, by Gender") +
+  geom_line(aes(y=f_turnout, color="Female"), size=1) +
+  geom_point(aes(y=f_turnout, color="Female",text=sprintf("Year: %s<br>Female Turnout: %s", year, f_turnout)), size=1.5) +
+  geom_line(aes(y=m_turnout, color="Male"), size=1) +
+  geom_point(aes(y=m_turnout, color="Male",text=sprintf("Year: %s<br>Male Turnout: %s", year, m_turnout)), size=1.5) +
+  scale_y_continuous(limits=c(45,70)) + 
+  scale_x_continuous(breaks=unique(LSdata$year)) + 
+  scale_color_manual(values = c("red","blue")) +
+  labs(colour="Gender") +
+  xlab("Year") +
+  ylab("Turnout (in %)") +
+  theme_classic()+
+  theme(legend.position = "bottom",
+        axis.text.x=element_text(angle = 45, hjust = 1),
+        plot.title = element_text(size = 15, face = "bold"))
+LokSabha
+
+```
+
+<br>
+
+```{r maps, echo=F,message=F, warning=F}
+library(raster)
+library(ggplot2)
+library(tidyverse)
+library(plotly)
+library(grid)
+library(gridExtra)
+
+statemap <- getData('GADM', country='IND', level=1)
+colnames(statemap@data)[4] <- "state"
+#rename some states
+statemap@data$state[statemap@data$state=="Jammu and Kashmir"] <- "Jammu & Kashmir"
+statemap@data$state[statemap@data$state=="NCT of Delhi"] <- "Delhi"
+statemap@data$state[statemap@data$state=="Odisha"] <- "Orissa"
+statemap@data$state[statemap@data$state=="Andaman and Nicobar"] <- "Andaman & Nicobar Islands"
+statemap@data$state[statemap@data$state=="Dadra and Nagar Haveli"] <- "Dadra & Nagar Haveli"
+statemap@data$state[statemap@data$state=="Daman and Diu"] <- "Daman & Diu"
+
+statemap <- fortify(statemap,region="state")
+colnames(statemap)[6] <- "state"
+statemap <- statemap[order(statemap$group,statemap$order),]
+statemap$state <- str_squish(statemap$state)
+
+LS <- readRDS("C:/Users/franz/Dropbox/PhD/Dissertation/Turnout Data/0 - Lok Sabha/PC-level turnout data/LSbystate.rds")
+LS$state <- str_squish(LS$state)
+LS2019 <- LS[LS$year==2019,]
+statemap2019 <- merge(statemap,LS2019,by="state",all.x=T)
+statemap2019 <- statemap2019[order(statemap2019$group,statemap2019$order),]
+
+LS2014 <- LS[LS$year==2014,]
+old.statemap <- statemap
+old.statemap$state[old.statemap$state=="Telangana"] <- "Andhra Pradesh"
+statemap2014 <- merge(old.statemap,LS2014,by="state",all.x=T)
+statemap2014 <- statemap2014[order(statemap2014$group,statemap2014$order),]
+
+LS2009 <- LS[LS$year==2009,]
+old.statemap <- statemap
+old.statemap$state[old.statemap$state=="Telangana"] <- "Andhra Pradesh"
+statemap2009 <- merge(old.statemap,LS2009,by="state",all.x=T)
+statemap2009 <- statemap2009[order(statemap2009$group,statemap2009$order),]
+
+LS2004 <- LS[LS$year==2004,]
+old.statemap <- statemap
+old.statemap$state[old.statemap$state=="Telangana"] <- "Andhra Pradesh"
+statemap2004 <- merge(old.statemap,LS2004,by="state",all.x=T)
+statemap2004 <- statemap2004[order(statemap2004$group,statemap2004$order),]
+
+
+LS.map2004 <- ggplot() +
+  geom_polygon(data = statemap2004, 
+               aes(x = long, y = lat, fill=gg,group = group,
+                   text=sprintf("State: %s<br>Gender Gap: %s", state, gg)),
+               color = 'gray',  size = .2) +
+  xlab("") +
+  ylab("") +
+  ggtitle("2004 General Election") +
+  scale_fill_gradient2(limits=c(-20,20),
+                       midpoint = 0, low = "darkgreen", mid = "yellow", high = "red",
+                       na.value = "grey50",
+                       name="Gender Gap (in pctage pts)") +
+  theme_classic() +
+  theme(axis.text=element_blank(),axis.ticks=element_blank(),axis.line=element_blank(),legend.position="bottom")
+
+LS.map2019 <- ggplot() +
+  geom_polygon(data = statemap2019, 
+               aes(x = long, y = lat, fill=gg,group = group,
+                   text=sprintf("State: %s<br>Gender Gap: %s", state, gg)),
+               color = 'gray',  size = .2) +
+  xlab("") +
+  ylab("") +
+  ggtitle("2019 General Election") +
+  scale_fill_gradient2(limits=c(-20,20),
+                       midpoint = 0, low = "darkgreen", mid = "yellow", high = "red",
+                       na.value = "grey50",
+                       name="Gender Gap (in pctage pts)") +
+  theme_classic() +
+  theme(axis.text=element_blank(),axis.ticks=element_blank(),axis.line=element_blank(),legend.position="bottom")
+
+grid.arrange(LS.map2004,LS.map2019,ncol=2,top=textGrob("Gender Gap in Turnout in India, by State",gp=gpar(fontsize=15,font=2)))
+
+```
+</p></details>
+
+<br>
+<br>
+
+
+#### **The Challenge of Measuring the Gender Turnout Gap**
+
+Studies of women's electoral participation face a major data constraint: very few countries collect and publish gender-disaggregated turnout data. Accordingly, previous scholarship mostly relied on survey data to gauge women’s electoral participation relative to men’s, despite the fact that survey respondents notoriously over-report having voted and we know nothing about whether this behavior is gendered. I explore this potenital source of error by comparing a  new dataset of administrative turnout data disaggregated by gender and survey-based estimates of turnout among men and women for about two dozen countries worldwide. I find that men overreport their turnout at even higher rates than women, obfuscating the gender turnout gap, that is, the difference between male and female turnout rates. This finding has important implications for scholars studying electoral participation, as survey results can either hide or exaggerate actual gender differences in turnout.</p>
+
+<details>
+<summary>Graphics</summary>
+<p>
+```{r worldwide, echo=F,message=F, warning=F}
+library(raster)
+library(ggplot2)
+library(tidyverse)
+library(plotly)
+global <- readRDS("C:/Users/franz/Dropbox/PhD/Dissertation/Turnout Data/global.rds")
+plot1 <- ggplot(global,aes(x=year,y=gg,color=country)) +
+  geom_line(size=1) +
+  geom_point(size=1.5) +
+  geom_hline(yintercept=0) +
+  xlab("Year") +
+  ylab("Gender Gap (in pctage points)") +
+  labs(color = "Country") +
+  scale_color_manual(values = c('#8dd3c7','#ffffb3','#bebada','#fb8072','#80b1d3','#fdb462','#b3de69','#fccde5','#d9d9d9','#bc80bd','#ccebc5','#dfc27d','#df65b0','#33a02c','#1f78b4','#fe9929','#e31a1c','#878787')) +
+  scale_x_continuous(breaks=seq(1900,2020,20)) + 
+  scale_y_continuous(breaks=seq(-15,40,5)) + 
+  theme_minimal() +
+  theme(legend.position = "bottom")
+plot1
+```
+</p></details>
+
+
+
+
+<br>
+<br>
+
+
+
+#### **Ethnic Identity Salience and Attitudes Toward Women**
+
+Are political attitudes affected by which of their multiple ethnic identities is most salient for a person? If each ethnic identity comes with certain social norms that are practiced and enforced by an ethnic group, then making one identity salient over another should restrict the choice space of acceptable behavior and attitudes accordingly. I test this theory using particularly meaningful attitudes: men’s attitudes toward women’s political and economic participation, which have been shown to affect women’s labor force participation and partaking in the political process around the world. Using an original online survey experiment in India, I show that it indeed matters which ethnic identity is most salient for a man. Males who were primed on their religious identity showed less support for women’s political and economic participation than those in the control group. The results were less clear-cut for the caste condition that primed men on their caste identity: while males self-identifying as Brahmins, members of other forward castes or Dalits increased their support for women’s participation when treated, men who belong to the Other Backward Classes (OBC) lowered their support when treated.
+
+
+<br>
+<br>
+
+
+#### **Economic Performance and Ethnic Party Success -- Evidence from India**
+
+Do economic conditions affect ethnic parties’ electoral fortunes? Using insights from research on ethnic parties, ethnic mobilization and economic voting, this paper suggests they do. In a patronage democracy like in India in particular, where people are dependent on the state for essential goods and services, this dependency can be expected to change with shifts in economic performance. And while economic shocks have been shown to often incite violence, research also suggests that sometimes, voting for ethnic parties can be a substitute for ethnic violence (or follow ethnic violence) in order to gain access to the state. I test this economic theory of ethnic voting using district-level data from across Indian states. A regression analysis shows a strong negative correlation between economic growth and the vote share captured by ethnic parties. An IV analysis using rainfall as an instrument for economic growth provides first evidence that this relationship might be causal.
