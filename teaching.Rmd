@@ -1,0 +1,58 @@
+---
+title: <h2>Teaching</h2>
+pagetitle: "Franziska Roscher"
+---
+
+<br>
+<br>
+
+#### Office Hours:
+
+Upon request.
+
+
+<br>
+<br>
+
+#### Past Teaching Experience:
+
+Teaching Assistant for **"Introduction to Research Methods for Politics"** (POL-UA 850), Spring 2021.
+
+Instructor: Prof. Anna Harvey.
+
+<br>
+
+Teaching Assistant for **"Thinking, Learning and Consciousness in Humans and Machines"** (NODEP-UA 158), Fall 2020.
+
+Instructor: Prof. David Stasavage.
+
+<br>
+
+Course Assistant for **"Civil Liberties"** (POL-UA 332), Spring 2019.
+
+Instructor: Prof. Christine Harrington.
+
+<br>
+
+Teaching Assistant for **"Introduction to International Politics"** (POL-UA 700), Fall 2018.
+
+Instructor: Prof. Shanker Satyanath.
+
+<details>
+<summary>Downloads</summary>
+<p>
+```{r,echo=F,message=F,warning=F}
+xfun::pkg_load2(c("htmltools", "mime"))
+xfun::embed_file('downloads/PBE Exercises.pdf', text ="PBE Exercises")
+```
+</p>
+<p>
+```{r,echo=F,message=F,warning=F}
+xfun::pkg_load2(c("htmltools", "mime"))
+xfun::embed_file('downloads/Exam Prep Exercises.pdf', text ="Exam Prep Exercises")
+```
+</p>
+</details>
+
+
+
