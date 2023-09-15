@@ -13,7 +13,7 @@
 
 <title>Franziska Roscher</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -60,6 +60,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -80,6 +81,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -137,11 +141,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -170,8 +178,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -179,16 +187,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -232,7 +233,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -280,9 +281,9 @@ text-align: justify}
 <h3>Dissertation</h3>
 <p><br></p>
 <div style="display: flex;">
-<div id="the-gender-turnout-gap-revisited-when-do-women-participate-unequally-in-the-electoral-process" class="section level4" style="width:60%; margin-right:50px;">
-<h4><strong>The Gender Turnout Gap Revisited: When Do Women Participate (Un)Equally in the Electoral Process?</strong></h4>
-<p>When do women turn out at equal rates to men? Existing theories are largely based on studies of Central European and North American cases. My dissertation revisits this question in India, where the gender turnout has recently closed in some of the poorest, but not the most prosperous states. Using original household-level surveys and a novel panel dataset at the constituency level, I show that traditional theories of female electoral participation hold little explanatory power in India: female turnout is only weakly or not at all correlated with (1) levels of development; (2) female labor force participation rates; or (3) female literacy. Instead, I argue that the structure of political competition together with household support determine levels of women’s political participation: where ethnic clientelism is more intense, clientelist parties increase returns to a vote and motivate households to support female turnout. When households support women’s turnout, they can bridge the resource gap to enable female participation even in the most unlikely of contexts, where women face low individual-level resource endowments and high social costs to public participation.</p>
+<div id="why-women-vote-when-and-how-clientelism-closes-the-gender-turnout-gap-book-project" class="section level4" style="width:60%; margin-right:50px;">
+<h4><strong>Why Women Vote: When and How Clientelism Closes the Gender Turnout Gap (Book Project)</strong></h4>
+<p>When do women turn out at equal rates to men? My dissertation re-investigates this question in the context of developing countries. Existing theories of women’s political participation are largely resource-based, yet in many developing countries, women turn out at par with men in the face of low levels of economic development and female labor force participation, and despite gendered differences in individual-level resource endowments. Based on an in-depth investigation of India, I argue that there is a second path to women’s equal political participation that does not rely on individual-level resources, but instead depends on clientelism and household support for female turnout. Where households are supportive, they can bridge the resource gap for women. Household support, in turn, depends on high levels of clientelist returns to a vote. I provide several pieces of empirical evidence from India consistent with this theory, based on two original surveys and a novel panel dataset on the composition of clientelist parties. I show that female turnout is higher in a poorer and more clientelist state than in a better developed but less clientelist state, and that household support for female turnout – but not other forms of political participation – is high under clientelism. I also demonstrate that increases in levels of clientelist mobilization – measured as a rise in the number of ethnic groups targeted by clientelist parties – leads to smaller gender turnout gaps at the constituency level. My research has important implication for our understanding of the relationship between development and female political participation.</p>
 </div>
 <div class="{width:&quot;10%&quot;;}">
 
@@ -297,8 +298,8 @@ text-align: justify}
 <h3>Working Papers</h3>
 <p><br></p>
 <div style="display: flex;">
-<div id="administering-democracy-on-the-quality-of-voter-lists-and-popular-political-participation-in-india" class="section level4" style="width:60%; margin-right:50px;">
-<h4><strong>Administering Democracy: On the Quality of Voter Lists and Popular Political Participation in India</strong></h4>
+<div id="administering-democracy-how-faulty-voter-lists-disenfranchise-women-in-india" class="section level4" style="width:60%; margin-right:50px;">
+<h4><strong>Administering Democracy: How Faulty Voter Lists Disenfranchise Women in India</strong></h4>
 <p>Voter roll quality is a major factor in determining both turnout and democratic legitimacy in a country. While under-enrollment and the extent of “deadwood” on voter lists have come under considerable scrutiny in the United States, the accuracy of electoral rolls in developing countries has not attracted the same scholarly attention so far. That is despite the fact that faulty lists hinder the electoral process, disenfranchise eligible individuals and distort official turnout statistics. Using original data from two full village censuses and a large-scale household survey, I examine the quality of the electoral roll in India’s largest state, Uttar Pradesh. I show that voter lists are considerably inflated in Uttar Pradesh; that electoral rolls include more obsolete records of females than males; and that actual participation rates far exceed official accounts. The reason for the inflation of voter lists, I argue, lies in the incentive structure for low-level officers in charge of maintaining the decentralized rolls.</p>
 <p><br> <br></p>
 </div>
