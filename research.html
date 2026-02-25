@@ -13,7 +13,7 @@
 
 <title> Research </title>
 
-<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -33,15 +33,6 @@
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6GTEBSSJ37"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-6GTEBSSJ37');
-</script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -101,80 +92,6 @@ pre code {
 </style>
 
 
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark the anchor link active (and if it's in a dropdown, also mark that active)
-  var dropdown = menuAnchor.closest('li.dropdown');
-  if (window.bootstrap) { // Bootstrap 4+
-    menuAnchor.addClass('active');
-    dropdown.find('> .dropdown-toggle').addClass('active');
-  } else { // Bootstrap 3
-    menuAnchor.parent().addClass('active');
-    dropdown.addClass('active');
-  }
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
 
 <!-- tabsets -->
 
@@ -240,38 +157,6 @@ $(document).ready(function () {
 
 
 
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">Franziska Roscher</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="research.html">Research</a>
-</li>
-<li>
-  <a href="teaching.html">Teaching</a>
-</li>
-<li>
-  <a href="data.html">Data</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
-
 <div id="header">
 
 
@@ -330,7 +215,7 @@ as well as the consequences of clientelism.</p>
 
 </div>
 <div style="width:40%;;margin-top:10px;margin-left=40px;">
-<p><img src="research_files/figure-html/maps-1.png" width="672" /></p>
+<p><img src="research_files/figure-html/maps-1.png" alt="" width="672" /></p>
 </div>
 </div>
 <p><br> <br></p>
@@ -379,7 +264,7 @@ gender turnout gap during the election.</p>
 </div>
 <div style="width:40%;margin-top:10px;margin-left=40px">
 <p><br></p>
-<p><img src="research_files/figure-html/ethnic%20groups-1.png" width="672" /></p>
+<p><img src="research_files/figure-html/ethnic%20groups-1.png" alt="" width="672" /></p>
 </div>
 </div>
 </div>
@@ -390,9 +275,12 @@ class="section level4">
 Disenfranchise Women in India</strong></h4>
 <div style="display: flex;">
 <div style="width:60%; margin-right:50px;">
+<ul>
+<li>2025 MPSA Best Paper by an Emerging Scholar Award</li>
+</ul>
 <p><a
 href="https://www.dropbox.com/scl/fi/5eket7w2hyn6s41unm688/2025_08_01_VoterRolls_FR.pdf?rlkey=o4p0gjxe9g6moacl221o6oroh&amp;st=v0nukbax&amp;dl=1"
-target="_blank">Download Working Paper</a></p>
+target="_blank">Download Working Paper</a> (<em>under review</em>)</p>
 <p>Faulty voter lists raise concerns about the health of democracy:
 incomplete lists effectively disenfranchise eligible adults, while
 inaccurate lists containing errors and deadwood potentially open the
@@ -416,44 +304,40 @@ explain at least some of the gender gap in enrollment.</p>
 </div>
 <div style="width:40%;margin-top:10px;margin-left=40px">
 <p><br></p>
-<p><img src="research_files/figure-html/electors-1.png" width="672" /></p>
+<p><img src="research_files/figure-html/electors-1.png" alt="" width="672" /></p>
 </div>
 </div>
 </div>
-<div
-id="voting-her-mind-or-voting-with-the-family-investigating-agency-and-vote-choice-in-india"
+<div id="gender-household-dynamics-and-preference-consistent-voting"
 class="section level4">
-<h4><strong>Voting Her Mind or Voting with the Family? Investigating
-Agency and Vote Choice in India</strong></h4>
-<p>(with <a href="https://cprindia.org/people/rahul-verma/"
-target="_blank">Rahul Verma</a>, CPR, Delhi)</p>
+<h4><strong>Gender, Household Dynamics, and Preference-Consistent
+Voting</strong></h4>
 <div style="display: flex;">
 <div style="width:60%; margin-right:50px;">
 <p><a
-href="https://www.dropbox.com/s/xni59kwk03vpjna/2025_03_05_VoteChoiceDelhi_FRRV.pdf?st=6931ytxo&amp;dl=1"
+href="https://www.dropbox.com/scl/fi/iwhwcldhm9xgrp3grw8my/2026_02_17_VoteChoiceDelhi_FR.pdf?rlkey=dleo2dotlkdvwp921oa9gyn9w&amp;dl=1"
 target="_blank">Download Working Paper</a> <em>(under review)</em></p>
-<p>How much agency do women hold over their vote choice? Where
-individuals are socially and economically dependent on the household,
-members coordinate on a host of behaviors, including political
-participation and vote choice. But how do we measure agency over vote
-choice? In many developing countries, policy preferences do not map
-neatly onto parties or candidates. Voting for the same party despite
-differing policy preferences can be rational in such settings. Vote
-pooling within the household, therefore, is not in and of itself proof
-of a lack of women’s agency. We overcome this problem by using a novel
-measure of <em>preference-consistent voting</em> that checks whether
-women’s vote is internally consistent, i.e., whether women voted in line
-with their own stated policy preferences. Contrary to expectations based
-on the literature, we find that women are no less likely than men to
-vote in accordance with their stated preferences; and that household
-disagreement on policy priorities does not predict women’s
-preference-consistent voting.</p>
+<p>When women vote for the same party as male household members, does
+this reflect coercion or independent choice? Evaluating women’s agency
+in vote choice is especially difficult in non-programmatic party
+systems, where distinct policy preferences can rationally lead to the
+same party choice as men. I develop a measure of preference-consistent
+voting that assesses whether individuals vote for the party they
+themselves identify as most competent on the issue they prioritize most.
+Using original dyadic survey data from India, I show that women vote as
+preference-consistently as men, even when they disagree with male
+household members. Among inconsistent voters, women are more likely to
+align with other women than with men. Patterns of agreement in party
+evaluations are consistent with symmetric persuasion rather than
+gendered domination. These findings suggest that households function as
+deliberative networks and demonstrate the value of measuring agency
+through internal consistency rather than vote alignment.</p>
 </div>
 <div class="{width:&quot;10%&quot;;}">
 
 </div>
 <div style="width:40%;margin-top:25px;margin-left=40px">
-<p><img src="research_files/figure-html/delhi-1.png" width="672" /></p>
+<p><img src="research_files/figure-html/delhi-1.png" alt="" width="672" /></p>
 </div>
 </div>
 <p><br> <br></p>
@@ -474,23 +358,32 @@ GSU; <a href="https://sayanbanerjee.me/">Sayan Banerjee</a>, Texas
 Tech)</p>
 <div style="display: flex;">
 <div style="width:60%; margin-right:50px;">
-<p><a href="https://osf.io/mdhtj/" target="_blank">Pre-Analysis
+<p><a href="https://osf.io/mdhtj/" target="_blank">Download Pre-Analysis
 Plan</a></p>
-<p>In much of the developing world, girls’ education lags behind boys’.
-Our research seeks to shed light on the role that cultural norms play in
-perpetuating this problem. Specifically, we investigate whether state
-actors – elected politicians or bureaucrats – can change families’
-expectations of the value of educating their duaghters. Appeals by state
-actors might be particularly effective in updating parents’ beliefs
-about the social acceptability and future payoffs of investing in girls’
-education because of state actors’ perceived knowledge of the local
-context as well as their perceived influence within it. In a large-scale
-field experiment in Bihar (N=2,200), one of India’s poorest states with
-one of the lowest female literacy rates, we use video appeals
-encouraging parents to educate their daughters recorded by real-life
-state actors to test this. We vary tier of government, position, and
-gender of the state actor, and collect a host of attitudinal and
-behavioral outcome measures.</p>
+<p>Where girls receive less education than boys, they become
+economically dependent on their households, leading to low
+intra-household agency and, ultimately, adverse development outcomes for
+themselves and their children. A major obstacle to girls’ education in
+many developing countries is parents’ attitudes: On the one hand,
+parents have incentives to invest in boys’ education, because sons are
+responsible for taking care of them in old age. On the other hand,
+social norms around girls’ future roles as wives and mothers as well as
+around their purity and safety might actively discourage parents from
+educating their daughters. We investigate one avenue for changing
+parental attitudes towards girls’ education: elite messaging that
+encourages parents to invest in their daughters’ education. In a
+large-scale survey experiment (N=2,300) in rural Bihar, India, we vary
+the gender and position of authority figures conveying endorsements and
+capture parental dispositions toward girls’ education through a variety
+of attitudinal and behavioral measures. We find that elite messages were
+more effective when they came from male elites at lower tiers of
+government. However, while elite messaging was able to shift parent’s
+willingness to invest in girls’ education on the margins, none was able
+to shift major aspirations on girls’ education, employment, or age at
+marriage. Our research highlights the type of behavioral change that can
+and cannot be molded by elite messaging in a setting with ingrained
+social norms, even when state policies alleviate economic
+constraints.</p>
 </div>
 <div class="{width:&quot;10%&quot;;}">
 
@@ -563,37 +456,6 @@ positive income shocks for rural laborers affected turnout.</p>
 </div>
 <div style="width:40%;margin-left:50px;margin-top:35px;">
 <p><img src="pics/IMG_0508_cropped.JPG" style="width:70.0%" /></p>
-</div>
-</div>
-<p><br></p>
-</div>
-<div id="the-challenge-of-measuring-the-gender-turnout-gap"
-class="section level4">
-<h4><strong>The Challenge of Measuring the Gender Turnout
-Gap</strong></h4>
-<div style="display: flex;">
-<div style="width:60%; margin-right:50px;">
-Studies of women’s electoral participation face a major data constraint:
-very few countries collect and publish gender-disaggregated turnout
-data. Accordingly, previous scholarship mostly relied on survey data to
-gauge women’s electoral participation relative to men’s, despite the
-fact that survey respondents notoriously over-report having voted and we
-know nothing about whether this behavior is gendered. I explore this
-potential source of error by comparing a new dataset of administrative
-turnout data disaggregated by gender and survey-based estimates of
-turnout among men and women for about two dozen countries worldwide. I
-find that men overreport their turnout at even higher rates than women,
-obfuscating the gender turnout gap, that is, the difference between male
-and female turnout rates. This finding has important implications for
-scholars studying electoral participation, as survey results can either
-hide or exaggerate actual gender differences in turnout.
-</p>
-</div>
-<div class="{width:&quot;10%&quot;;}">
-
-</div>
-<div style="width:40%;margin-top:10px;">
-<p><img src="research_files/figure-html/worldwide-1.png" width="672" /></p>
 </div>
 </div>
 </div>
